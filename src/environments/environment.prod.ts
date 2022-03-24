@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  appUrl: "https://interview-easy.azurewebsites.net/"
+  springAppUrl: "https://interview-easy.azurewebsites.net/",
+  nodeAppUrl:""
 };

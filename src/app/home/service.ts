@@ -11,7 +11,11 @@ export class HomeService {
   base_url : string;
   
   constructor(private httpClient : HttpClient) { 
-    this.base_url=environment.appUrl;
+    this.base_url=environment.springAppUrl;
+  }
+
+  addCategories(){
+   // this.httpClient.post("",)
   }
 
   getHomeStartMessage():Observable<any>{
