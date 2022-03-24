@@ -1,24 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-
 export class HomeComponent implements OnInit {
+  constructor(private homeService: HomeService, private router: Router) {}
 
-  constructor(private homeService: HomeService) {
-    
-   }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
-  start(){
-    this.homeService.getHomeStartMessage().subscribe(response=>{
-      alert(response);
-    })
+  start() {
+    //Navigating to Category Page
+    this.router.navigate(['categories']);
   }
 }
