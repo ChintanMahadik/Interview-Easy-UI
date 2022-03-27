@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   springAppUrl: "http://localhost:9090/",
-  nodeAppUrl:""
+  nodeAppUrl: "http://192.168.0.104:3000/"
 };
 
 /*

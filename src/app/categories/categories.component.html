@@ -10,7 +10,12 @@
         View your categories learning using below buttons. Add your new learning categories using '+' button below
       </p>
       <mat-card-actions>
-        <button mat-raised-button color="accent" (click)="addCategory()">+</button>
+        <button mat-raised-button color="warn" (click)="addCategoryForm()">+</button>
+        <div *ngFor="let category of categories" >
+          <br><button mat-raised-button color="accent" (click)="viewCategoryDetails()">{{category.category_name}}</button>
+        </div>
+        
       </mat-card-actions>
     </mat-card-content>
+
   </mat-card>
