@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Add Category</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Fill in the following form to add Categories for your learnings</h3>
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>Type your input here</mat-label>
+      <input matInput placeholder="Category" [(ngModel)]="category_name">
+      <mat-hint>E.g: Java</mat-hint>
+    </mat-form-field>
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="addCategory()">Add</button>
+</mat-dialog-actions>
