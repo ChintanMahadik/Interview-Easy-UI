@@ -12,9 +12,8 @@
       <mat-card-actions>
         <button mat-raised-button color="warn" (click)="addCategoryForm()">+</button>
         <div *ngFor="let category of categories" >
-          <br><button mat-raised-button color="accent" (click)="viewCategoryDetails()">{{category.category_name}}</button>
+          <br><button mat-raised-button color="primary" (click)="viewCategoryModule(category.category_name)">{{category.category_name}}</button>
         </div>
-        
       </mat-card-actions>
     </mat-card-content>
 

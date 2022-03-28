@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-
 import {
   MatDialog,
   MatDialogRef,
@@ -9,7 +7,6 @@ import {
 } from '@angular/material/dialog';
 import { CategoryService } from './service';
 import { Category } from './IE_Category';
-import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -18,10 +15,14 @@ import { RouterModule } from '@angular/router';
 })
 export class CategoriesComponent implements OnInit {
   category_name: string;
-  categories:Category[];
-  constructor(public dialog: MatDialog, private categoryService: CategoryService) {
+  categories: Category[];
+  constructor(
+    public dialog: MatDialog,
+    private categoryService: CategoryService,
+    private router: Router
+  ) {
     this.category_name = '';
-    this.categories=[];
+    this.categories = [];
   }
 
   ngOnInit(): void {
@@ -32,15 +33,17 @@ export class CategoriesComponent implements OnInit {
     const dialogRef = this.dialog.open(CategoryForm);
   }
 
-  viewCategoryDetails() {
+  viewCategoryModule(category_name: string) {
+    this.router.navigate(['module', category_name]);
   }
 
   viewCategory() {
     console.log('Calling Categories viewing service');
-    this.categoryService.viewCategories().subscribe((resp) => {
-      if(resp.result=="Success")
-      this.categories=resp.data;
-    });
+    // this.categoryService.viewCategories().subscribe((resp) => {
+    //   if(resp.result=="Success")
+    //   this.categories=resp.data;
+    // });
+    this.categories = [{ id: 1, category_name: 'Java' }];
   }
 }
 
@@ -64,14 +67,14 @@ export class CategoryForm {
       if (resp.result == 'Success') {
         alert(resp.result);
         this.dialogRef.close();
-        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate(['categories']);
-      }); 
-
+        this.router
+          .navigateByUrl('/', { skipLocationChange: true })
+          .then(() => {
+            this.router.navigate(['categories']);
+          });
       } else {
         alert(resp.message);
       }
     });
   }
-
 }
